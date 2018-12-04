@@ -1,6 +1,5 @@
 # Web & Database Design Assignment
 
-The game assignment for Web & Database Design.
-Game: Backgammon
-Programmers: Rodin Haker
-Daniela Toader
+The game assignment for Web & Database Design.\n
+Game: Backgammon\n
+Programmers: Rodin Haker & Daniela Toader
