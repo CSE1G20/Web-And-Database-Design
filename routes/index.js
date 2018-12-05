@@ -1,9 +1,18 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
+
+server.configure(function () {
+  server.use(express.static(__dirname + '/public'))
+})
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', function (req, res) {
+  res.sendFile('splash.html', { root: './public' })
+})
 
-module.exports = router;
+/* Press Play GET game page */
+router.get('/play', function (req, res) {
+  res.sendFile('game.html', { root: './public' })
+})
+
+module.exports = router
