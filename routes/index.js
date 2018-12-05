@@ -1,9 +1,7 @@
 var express = require('express')
 var router = express.Router()
 
-server.configure(function () {
-  server.use(express.static(__dirname + '/public'))
-})
+app.use(express.static(__dirname + '/public'))
 
 /* GET home page. */
 router.get('/', function (req, res) {
