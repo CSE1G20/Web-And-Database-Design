@@ -11,11 +11,11 @@
       href="stylesheets/game.css"
     />
   </head>
-  <body>
+  <body onload="askUsername()">
     <main>
       <section id="ui">
         <div id="player1">
-          <span id="username1"></span> <span id="score1"></span>
+          <span id="username1"></span> <span id="score1">200</span>
         </div>
         <div id="player2">
           <span id="username2"></span><span id="score2"></span>
@@ -85,5 +85,6 @@
       </section>
       <section id="game"><div id="board"></div></section>
     </main>
+    <script src="javascripts/game.js"></script>
   </body>
 </html>
