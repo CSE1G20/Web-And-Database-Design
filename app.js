@@ -13,6 +13,10 @@ app.get('/', (req, res) => {
   res.render('splash.ejs')
 })
 
+app.get('/play', function (req, res) {
+  res.sendFile('game.html', { root: './public' })
+})
+
 var server = http.createServer(app)
 
 server.listen(port)

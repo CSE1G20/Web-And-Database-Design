@@ -3,3 +3,44 @@ body{
     background-size: 100% 100%;
     background-color: black;
 }
+
+#title{
+    width: 850px;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+
+#title img{
+    width: 100%;
+}
+
+#button-container{
+    width: 75px;
+    margin: 30px auto;
+}
+
+button{
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+    padding: 0;
+    margin: 15px 0;
+    vertical-align: top;
+    background-size: contain;
+    background-color: transparent;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#play_btn{
+    background-image: url("../images/start_btn.png");
+}
+
+#help_btn{
+    background-image: url("../images/instructions_btn.png");
+}
+
+#settings_btn{
+    background-image: url("../images/settings_btn.png");
+}
