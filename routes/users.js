@@ -40,11 +40,10 @@ router.post('/register', function (req, res) {
         "$regex": "^" + username + "\\b", "$options": "i"
       }
     }, function (err, username) {
-      if (user || mail) {
+      if (user) {
         res.render('register', {
-          user: user,
-          mail: mail
-        });
+          user: user
+        })
       }
       else {
         let newUser = new User({
