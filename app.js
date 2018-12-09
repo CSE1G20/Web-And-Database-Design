@@ -77,5 +77,8 @@ app.get('/play', function (req, res) {
 })
 
 // var server = http.createServer(app)
-const port = process.argv[2]
+let port = process.env.PORT
+if (port == null || port == "") {
+  port = 8000
+}
 app.listen(port)
