@@ -31,21 +31,19 @@ router.post('/register', function (req, res) {
   if (errors) {
     res.render('register', {
       errors: errors
-    });
-  }
-  else {
-    //checking for username already taken
+    })
+  } else {
     User.findOne({
       username: {
-        "$regex": "^" + username + "\\b", "$options": "i"
+        '$regex': '^' + username + '\\b', '$options': 'i'
       }
-    }, function (err, username) {
+    }, function (err, user) {
+      if (err) throw err
       if (user) {
         res.render('register', {
           user: user
         })
-      }
-      else {
+      } else {
         let newUser = new User({
           username: username,
           password: password
@@ -73,28 +71,27 @@ router.post('/register', function (req, res) {
       }
     })
   }
-}
-
+})
 
 // Login Form
 router.get('/login', function (req, res) {
-    res.render('login')
-  })
+  res.render('login')
+})
 
 // Login Process
 router.post('/login', function (req, res, next) {
-    passport.authenticate('local', {
-      successRedirect: '/',
-      failureRedirect: '/users/login',
-      failureFlash: true
-    })(req, res, next)
-  })
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/users/login',
+    failureFlash: true
+  })(req, res, next)
+})
 
 // Logout
 router.get('/logout', function (req, res) {
-    req.logout()
-    req.flash('success', 'You are logged out')
-    res.redirect('/users/login')
-  })
+  req.logout()
+  req.flash('success', 'You are logged out')
+  res.redirect('/users/login')
+})
 
 module.exports = router
