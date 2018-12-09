@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register</title>
+  </head>
+
+  <body>
+    <%- messages() %>
+    <h1>Register</h1>
+    <form method="POST" action="/users/register">
+      <div id="form-group">
+        <label>Username:</label
+        ><input class="form-control" name="username" type="text" />
+      </div>
+      <div id="form-group">
+        <label>Password:</label
+        ><input class="form-control" name="password" type="password" />
+      </div>
+      <div id="form-group">
+        <label>Confirm:</label
+        ><input class="form-control" name="password2" type="password" />
+      </div>
+      <br /><input class="btn btn-primary" type="submit" value="Submit" />
+    </form>
+
+    <br />
+    <hr />
+    <footer></footer>
+  </body>
+</html>

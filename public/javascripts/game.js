@@ -1,18 +1,17 @@
 function askUsername () {
-  var username, regUsername, regWhiteSpace
+  var username, regUsername
 
   regUsername = /^[a-z]+$/i
-  // regWhiteSpace = /^\s+$/
 
-  username = prompt('Please enter your username', '')
+  username = window.prompt('Please enter your username', '')
 
   if (!username) {
     window.history.go(-1)
     return
   }
 
-  while (username === null || username.length < 3 || !regUsername.test(username) /* || regWhiteSpace.test(username) */) {
-    username = prompt('Only letters and no whitespaces allowed, please try again', '')
+  while (username === null || username.length < 3 || !regUsername.test(username)) {
+    username = window.prompt('Only letters and no whitespaces allowed, please try again', '')
 
     if (!username) {
       window.history.go(-1)
