@@ -31,62 +31,59 @@ router.post('/register', function (req, res) {
   if (errors) {
     res.render('register', {
       errors: errors
-    })
-  } else {
-    // Check If Username Taken
+    });
+  }
+  else {
+    //checking for username already taken
     User.findOne({
       username: {
         "$regex": "^" + username + "\\b", "$options": "i"
       }
-    }, function (err, user) {
-      User.findOne({
-        email: {
-          "$regex": "^" + email + "\\b", "$options": "i"
-        }
-      }, function (err, mail) {
-        if (user || mail) {
-          res.render('register', {
-            user: user,
-            mail: mail
-          });
-        }
-        else {
-          let newUser = new User({
-            username: username,
-            password: password
-          })
+    }, function (err, username) {
+      if (user || mail) {
+        res.render('register', {
+          user: user,
+          mail: mail
+        });
+      }
+      else {
+        let newUser = new User({
+          username: username,
+          password: password
+        })
 
-          bcrypt.genSalt(10, function (err, salt) {
+        bcrypt.genSalt(10, function (err, salt) {
+          if (err) {
+            console.log(err)
+          }
+          bcrypt.hash(newUser.password, salt, function (err, hash) {
             if (err) {
               console.log(err)
             }
-            bcrypt.hash(newUser.password, salt, function (err, hash) {
+            newUser.password = hash
+            newUser.save(function (err) {
               if (err) {
                 console.log(err)
+              } else {
+                req.flash('success', 'You are now registered and can log in')
+                res.redirect('/users/login')
               }
-              newUser.password = hash
-              newUser.save(function (err) {
-                if (err) {
-                  console.log(err)
-                } else {
-                  req.flash('success', 'You are now registered and can log in')
-                  res.redirect('/users/login')
-                }
-              })
             })
           })
-        }
-      });
-    });
+        })
+      }
+    })
   }
+}
 
-  // Login Form
-  router.get('/login', function (req, res) {
+
+// Login Form
+router.get('/login', function (req, res) {
     res.render('login')
   })
 
-  // Login Process
-  router.post('/login', function (req, res, next) {
+// Login Process
+router.post('/login', function (req, res, next) {
     passport.authenticate('local', {
       successRedirect: '/',
       failureRedirect: '/users/login',
@@ -94,11 +91,11 @@ router.post('/register', function (req, res) {
     })(req, res, next)
   })
 
-  // Logout
-  router.get('/logout', function (req, res) {
+// Logout
+router.get('/logout', function (req, res) {
     req.logout()
     req.flash('success', 'You are logged out')
     res.redirect('/users/login')
   })
 
-  module.exports = router
+module.exports = router
