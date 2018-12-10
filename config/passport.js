@@ -1,13 +1,7 @@
-const express = require('express')
 const LocalStrategy = require('passport-local').Strategy
 const User = require('../models/user')
-const passport = require('passport')
+const config = require('../config/database')
 const bcrypt = require('bcryptjs')
-
-const app = express()
-// Passport Middleware
-app.use(passport.initialize())
-app.use(passport.session())
 
 module.exports = function (passport) {
   // Local Strategy
@@ -20,7 +14,7 @@ module.exports = function (passport) {
         return done(null, false, { message: 'No user found' })
       }
 
-      // Match Passport
+      // Match Password
       bcrypt.compare(password, user.password, function (err, isMatch) {
         if (err) throw err
         if (isMatch) {
