@@ -1,7 +1,13 @@
+const express = require('express')
 const LocalStrategy = require('passport-local').Strategy
 const User = require('../models/user')
-const config = require('../config/database')
+const passport = require('passport')
 const bcrypt = require('bcryptjs')
+
+const app = express()
+// Passport Middleware
+app.use(passport.initialize())
+app.use(passport.session())
 
 module.exports = function (passport) {
   // Local Strategy
