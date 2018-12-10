@@ -83,13 +83,15 @@ app.get('*', function (req, res, next) {
   next()
 })
 
-// TODO: move to index | Home Route
+// TODO: move to index router | Home Route
 app.get('/', (req, res) => {
   res.render('splash.ejs')
 })
 
+let User = require('./models/user')
+
 app.get('/play', function (req, res) {
-  res.sendFile('game.html', { root: './public' })
+  res.render('game.ejs', { username: req.user.username })
 })
 
 // Route Files
