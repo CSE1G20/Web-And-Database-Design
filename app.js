@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const expressValidator = require('express-validator')
 const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
@@ -52,11 +53,13 @@ app.use(function (req, res, next) {
 })
 
 // Express Validator Middleware
-app.use(ExpressValidator({
+app.use(expressValidator({
   errorFormatter: function (param, msg, value) {
-    var namespace = param.split('.'),
-       root = namespace.shift(),
-       formParam = root
+    var namespace = param.split('.')
+
+    var root = namespace.shift()
+
+    var formParam = root
 
     while (namespace.length) {
       formParam += '[' + namespace.shift() + ']'
