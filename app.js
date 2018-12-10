@@ -31,7 +31,6 @@ app.set('view engine', 'ejs')
 // Body Parser Middleware
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
-
 // parse application/json
 app.use(bodyParser.json())
 
@@ -56,9 +55,7 @@ app.use(function (req, res, next) {
 app.use(expressValidator({
   errorFormatter: function (param, msg, value) {
     var namespace = param.split('.')
-
     var root = namespace.shift()
-
     var formParam = root
 
     while (namespace.length) {
@@ -71,10 +68,6 @@ app.use(expressValidator({
     }
   }
 }))
-
-// Route Files
-let users = require('./routes/users')
-app.use('/users', users)
 
 // Passport Config
 require('./config/passport')(passport)
@@ -95,6 +88,10 @@ app.get('/', (req, res) => {
 app.get('/play', function (req, res) {
   res.sendFile('game.html', { root: './public' })
 })
+
+// Route Files
+let users = require('./routes/users')
+app.use('/users', users)
 
 // var server = http.createServer(app)
 let port = process.env.PORT
