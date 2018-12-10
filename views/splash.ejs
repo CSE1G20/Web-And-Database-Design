@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Backgammon</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <link
       rel="stylesheet"
       type="text/css"
@@ -12,39 +13,37 @@
     />
   </head>
 
-  <body onload="getversion">
+  <body>
     <div id="title"><img src="images/title.png" /></div>
-    <div id="button-container">
     <% if(user) { %>
-      <form action="/play" method="GET"><button type="submit" id="play_btn"></form></button>
-      <% }else{ %>
-        <%- messages('message', locals) %>
-        <h1>Login</h1>
-        <form method="POST" action="/users/login">
-          <div id="form-group">
-            <label>Username:</label
-            ><input class="form-control" name="username" type="text" />
-          </div>
-          <div id="form-group">
-            <label>Password:</label
-            ><input class="form-control" name="password" type="password" />
-          </div>
-          <br /><input class="btn btn-primary" type="submit" value="Submit" />
-        </form>
-      <% } %>
-
-      <% if(user) { %>
+      <div id="button-container">
+        <form action="/play" method="GET"><button type="submit" id="play_btn"></form></button>
+        <button id="help_btn"></button>
+        <button id="settings_btn"></button>
         <a href='users/logout'>Logout</a>
-      <% }else{ %>
-        <pre>
-          <a href="/users/register">Register</a>
-        
-          <a href="/users/login">Login</a>
-        </pre>
-      <% } %>
-      <button id="help_btn"></button>
-      <button id="settings_btn"></button>
-    </div>
+      </div>
+    <% }else{ %>
+      <%- messages('message', locals) %>
+      <div id="form-container">
+        <form id="login-form" method="POST" action="/users/login">
+          <span id="login-form-title">Login</span>
+          <div id="input-container">
+            <div class="form-group validate-input">
+              <input class="login-input" name="username" type="text" placeholder="Username" />
+              <span class="focus-login-input"></span>
+              </div>
+            <div class="form-group validate-input">
+              <input class="login-input" name="password" type="password" placeholder="Password" />
+              <span class="focus-login-input"></span>
+            </div>
+          </div>
+          <div id="container-login-form-btn">
+            <input id="login-form-btn" type="submit" value="Submit" />
+          </div>
+          <div id="register-link"><a href="/users/register">Register</a></div>
+        </form>
+      </div>
+    <% } %>
     <span id="version">Version 1.0.0</span>
   </body>
 </html>

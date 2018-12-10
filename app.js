@@ -1,9 +1,9 @@
 const express = require('express')
 const path = require('path')
+const favicon = require('serve-favicon')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const expressValidator = require('express-validator')
-const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
 const config = require('./config/database')
@@ -23,6 +23,9 @@ db.on('error', function (err) {
 
 // Init app
 const app = express()
+
+// Initiate Favicon Location
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'))
