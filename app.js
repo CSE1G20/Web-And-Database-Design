@@ -1,5 +1,4 @@
 const express = require('express')
-const http = require('http')
 const path = require('path')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -51,6 +50,24 @@ app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
+
+// Express Validator Middleware
+app.use(ExpressValidator({
+  errorFormatter: function (param, msg, value) {
+    var namespace = param.split('.'),
+       root = namespace.shift(),
+       formParam = root
+
+    while (namespace.length) {
+      formParam += '[' + namespace.shift() + ']'
+    }
+    return {
+      param: formParam,
+      msg: msg,
+      value: value
+    }
+  }
+}))
 
 // Route Files
 let users = require('./routes/users')
