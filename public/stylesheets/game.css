@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: tahoma, sans-serif;
-  background-image: url("gamebg.jpg");
+  background-image: url("images/gamebg.jpg");
   background-size: 120% 120%;
   background-repeat: no-repeat;
  }
@@ -61,7 +61,7 @@ body {
   width: 28%;
   min-width: 390px;
   height: 22%;
-  background-image: url(chatback.png);
+  background-image: url(images/chatback.png);
   background-size: 100% 100%;
   padding: 25px;
   margin: 0;
@@ -76,7 +76,7 @@ body {
 	height: 5%;
 	padding: 17px;
   margin: 0;
-	background-image: url(arrow1.png);
+	background-image: url(images/arrow1.png);
 	background-repeat: no-repeat;
   background-size: 50% 50%;
   position: absolute;
@@ -89,7 +89,7 @@ body {
 	height: 5%;
 	padding: 17px;
   margin: 0;
-	background-image: url(arrow2.png);
+	background-image: url(images/arrow2.png);
 	background-repeat: no-repeat;
   background-size: 50% 50%;
   position: absolute;
