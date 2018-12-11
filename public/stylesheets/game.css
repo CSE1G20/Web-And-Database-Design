@@ -1,11 +1,12 @@
 @charset "utf-8";
+
 body {
   margin: 0;
   font-family: tahoma, sans-serif;
-  background-image: url("images/gamebg.jpg");
+  background-image: url("../images/gamebg.jpg");
   background-size: 120% 120%;
   background-repeat: no-repeat;
- }
+}
 
 #player1 {
   position: absolute;
@@ -17,7 +18,7 @@ body {
 #username1 {
   font-family: 'Times New Roman', Times, serif;
   font-size: 35px;
-  color: #fff
+  color: #fff;
 }
 
 /*#score1 {
@@ -45,7 +46,7 @@ body {
   color: #fff;
 }*/
 
-#timer{
+#timer {
   font-family: 'Times New Roman', Times, serif;
   font-size: 35px;
   color: #fff;
@@ -61,49 +62,48 @@ body {
   width: 28%;
   min-width: 390px;
   height: 22%;
-  background-image: url(images/chatback.png);
+  background-image: url("../images/chatback.png");
   background-size: 100% 100%;
   padding: 25px;
   margin: 0;
   right: 10px;
- 
+
   bottom: 10px;
   /*box-shadow: 0 3px #ccc;*/
 }
 
-#arrow1{
-	width: 4%;
-	height: 5%;
-	padding: 17px;
+#arrow1 {
+  width: 4%;
+  height: 5%;
+  padding: 17px;
   margin: 0;
-	background-image: url(images/arrow1.png);
-	background-repeat: no-repeat;
+  background-image: url("../images/arrow1.png");
+  background-repeat: no-repeat;
   background-size: 50% 50%;
   position: absolute;
   top: 19%;
   left: 92%;
 }
 
-#arrow2{
-	width: 4%;
-	height: 5%;
-	padding: 17px;
+#arrow2 {
+  width: 4%;
+  height: 5%;
+  padding: 17px;
   margin: 0;
-	background-image: url(images/arrow2.png);
-	background-repeat: no-repeat;
+  background-image: url("../images/arrow2.png");
+  background-repeat: no-repeat;
   background-size: 50% 50%;
   position: absolute;
   top: 57%;
   left: 92%;
 }
 
-#triangle13{
+#triangle13 {
   position: absolute;
   left: 10%;
   width: 5%;
   height: 50%;
 }
-
 
 /*#borderchat{
 	border: 30px solid transparent;
@@ -180,7 +180,7 @@ body {
   padding: 3%;
   font-size: 18px;
   color: #333;
-  border:none;
+  border: none;
 }
 
 #chat-form textarea:focus {
@@ -226,7 +226,7 @@ body {
   top: 50px;
 }
 
-#board-bg{
+#board-bg {
   position: absolute;
   top: 0;
   left: 0;
