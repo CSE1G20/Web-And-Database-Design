@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const socket = require('socket.io')
 const favicon = require('serve-favicon')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -88,10 +89,12 @@ app.get('/', (req, res) => {
   res.render('splash.ejs')
 })
 
-let User = require('./models/user')
-
 app.get('/play', function (req, res) {
-  res.render('game.ejs', { username: req.user.username })
+  if (req.user) {
+    res.render('game.ejs', { username: req.user.username })
+  } else {
+    res.redirect('/')
+  }
 })
 
 // Route Files
@@ -103,4 +106,10 @@ let port = process.env.PORT
 if (port == null || port === '') {
   port = 8000
 }
-app.listen(port)
+const server = app.listen(port)
+
+// Initiate SocketIO
+const io = socket(server)
+io.on('connection', function (socket) {
+  console.log('Made socket connection', socket.id)
+})
